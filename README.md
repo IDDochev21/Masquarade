@@ -1,6 +1,8 @@
 <h1 align ="center">Masquerade</h1>
 <div align = "center">
 
+<img src = "assets/logo.png" alt = "logo" width = "30%"></img>
+
 <h2>📰About</h2>
 <p> 
     We have made a <b>web</b> and <b>console</b> application that allows our customers to register themselves to our bank using whichever method they are most comfortable with.
