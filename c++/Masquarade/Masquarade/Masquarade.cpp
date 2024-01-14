@@ -1,69 +1,41 @@
-#include <iostream>
-#include <fstream>
-#include <string>
+
 #include "Register.h"
 #include "Utility.h"
+#include "Login.h"
 
 
-
-//void registerUser(std::ofstream& file) {
+//void login(std::ifstream& file) {
 //    std::string username, password;
+//    bool isAuthenticated = 0;
 //
 //    printLine();
-//    std::cout << "Enter a new username: ";
+//    std::cout << "Enter your username: ";
 //    std::cin >> username;
 //
-//    std::ifstream inFile("credentials.txt");
-//    if (inFile.is_open()) {
-//        if (doesUserExist(username, inFile)) {
-//            std::cout << "Username already exists. Choose another username.\n";
-//            printLine();
-//            return;
+//    std::cout << "Enter your password: ";
+//    std::cin >> password;
+//
+//    file.clear();
+//    file.seekg(0);
+//
+//    std::string savedUsername, savedPassword;
+//    bool isUsernameFound = 0;
+//    while (getline(file, savedUsername) && getline(file, savedPassword)) {
+//        if (savedUsername == username && savedPassword == password) {
+//            isUsernameFound = 1;
+//            isAuthenticated = 1;
+//            break;
 //        }
 //    }
 //
-//    std::cout << "Enter a password: ";
-//    std::cin >> password;
-//
-//    file << username << '\n' << password << '\n';
-//    file.flush();
-//
-//    std::cout << "User registered successfully!\n";
+//    if (isUsernameFound && isAuthenticated) {
+//        std::cout << "Login successful!\n";
+//    }
+//    else {
+//        std::cout << "Invalid username or password.\n";
+//    }
 //    printLine();
 //}
-
-void login(std::ifstream& file) {
-    std::string username, password;
-    bool isAuthenticated = 0;
-
-    printLine();
-    std::cout << "Enter your username: ";
-    std::cin >> username;
-
-    std::cout << "Enter your password: ";
-    std::cin >> password;
-
-    file.clear();
-    file.seekg(0);
-
-    std::string savedUsername, savedPassword;
-    bool isUsernameFound = 0;
-    while (getline(file, savedUsername) && getline(file, savedPassword)) {
-        if (savedUsername == username && savedPassword == password) {
-            isUsernameFound = 1;
-            isAuthenticated = 1;
-            break;
-        }
-    }
-
-    if (isUsernameFound && isAuthenticated) {
-        std::cout << "Login successful!\n";
-    }
-    else {
-        std::cout << "Invalid username or password.\n";
-    }
-    printLine();
-}
 void chose() {
     std::ofstream outFile("credentials.txt", std::ios::app);
     std::ifstream inFile("credentials.txt");
