@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Chose.cpp" />
     <ClCompile Include="Login.cpp" />
-    <ClCompile Include="Masquarade.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
