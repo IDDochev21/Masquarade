@@ -1,49 +1,36 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-
-bool doesUserExist(const std::string& username, std::ifstream& file) {
-    file.clear();
-    file.seekg(0);
-    std::string line;
-    while (getline(file, line)) {
-        if (line == username) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-void printLine() {
-    std::cout << "\n------------------------\n";
-}
+#include "Register.h"
+#include "Utility.h"
 
 
-void registerUser(std::ofstream& file) {
-    std::string username, password;
 
-    printLine();
-    std::cout << "Enter a new username: ";
-    std::cin >> username;
-
-    std::ifstream inFile("credentials.txt");
-    if (inFile.is_open()) {
-        if (doesUserExist(username, inFile)) {
-            std::cout << "Username already exists. Choose another username.\n";
-            printLine();
-            return;
-        }
-    }
-
-    std::cout << "Enter a password: ";
-    std::cin >> password;
-
-    file << username << '\n' << password << '\n';
-    file.flush();
-
-    std::cout << "User registered successfully!\n";
-    printLine();
-}
+//void registerUser(std::ofstream& file) {
+//    std::string username, password;
+//
+//    printLine();
+//    std::cout << "Enter a new username: ";
+//    std::cin >> username;
+//
+//    std::ifstream inFile("credentials.txt");
+//    if (inFile.is_open()) {
+//        if (doesUserExist(username, inFile)) {
+//            std::cout << "Username already exists. Choose another username.\n";
+//            printLine();
+//            return;
+//        }
+//    }
+//
+//    std::cout << "Enter a password: ";
+//    std::cin >> password;
+//
+//    file << username << '\n' << password << '\n';
+//    file.flush();
+//
+//    std::cout << "User registered successfully!\n";
+//    printLine();
+//}
 
 void login(std::ifstream& file) {
     std::string username, password;
