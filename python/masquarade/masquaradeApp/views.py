@@ -9,8 +9,7 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-
-            # Check if user exists in JSON file (you may want to use a database in a real scenario)
+            
             try:
                 with open('users.json', 'r') as file:
                     users = json.load(file)
@@ -19,7 +18,7 @@ def login_view(request):
 
             for user in users:
                 if user['username'] == username and user['password'] == password:
-                    return redirect('success')  # Redirect to a success page
+                    return redirect('success')
             else:
                 return render(request, 'masquaradeApp/login.html', {'form': form, 'error': 'Invalid credentials'})
 
@@ -40,7 +39,6 @@ def register_view(request):
             if password != confirm_password:
                 return render(request, 'masquaradeApp/register.html', {'form': form, 'error': 'Passwords do not match'})
 
-            # Save user information to the JSON file (you may want to use a database in a real scenario)
             try:
                 with open('users.json', 'r') as file:
                     users = json.load(file)
@@ -52,7 +50,7 @@ def register_view(request):
             with open('users.json', 'w') as file:
                 json.dump(users, file)
 
-            return redirect('login')  # Redirect to the login page after successful registration
+            return redirect('login') 
     else:
         form = RegistrationForm()
 
