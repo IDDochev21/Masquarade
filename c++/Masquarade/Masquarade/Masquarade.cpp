@@ -38,7 +38,6 @@ void registerUser(std::ofstream& file) {
     std::cout << "Enter a password: ";
     std::cin >> password;
 
-    // Write data to the file and immediately flush it
     file << username << '\n' << password << '\n';
     file.flush();
 
@@ -78,14 +77,13 @@ void login(std::ifstream& file) {
     }
     printLine();
 }
-
-int main() {
+void chose() {
     std::ofstream outFile("credentials.txt", std::ios::app);
     std::ifstream inFile("credentials.txt");
 
     if (!outFile.is_open() || !inFile.is_open()) {
         std::cerr << "Error opening file!\n";
-        return 1;
+        return;
     }
 
     int choice;
@@ -116,5 +114,9 @@ int main() {
     outFile.close();
     inFile.close();
 
-    return 0;
+    return;
+}
+
+int main() {
+    chose();
 }
