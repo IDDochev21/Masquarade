@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Chose.cpp" />
     <ClCompile Include="Login.cpp" />
-    <ClCompile Include="Masquarade.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chose.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="Register.h" />
     <ClInclude Include="Utility.h" />
