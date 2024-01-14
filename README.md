@@ -10,10 +10,8 @@
 
 <div align = "center">
 <h2>📥Installation</h2>
-<ol>
-<li>1.Open a terminal on you local machine and clone the repository by the link bellow.</li>
-<li>2.Run the application and you are ready to go!</li>
-<ol>
+<p>1. Open a terminal on you local machine and clone the repository by the link bellow.</p>
+<p>2. Run the application and you are ready to go!<p>
 <pre>https://github.com/IDDochev21/Masquarade</pre>
 
 <h1>Installation</h1>
@@ -23,28 +21,23 @@
 <pre><code>pip install django</code></pre>
 
 <p>Then, in the <strong>CMD</strong>:</p>
-<ol>
-<li>Change directory to the root:</li>
+
+<p>Change directory to the root:</p>
     <pre><code>cd \</code></pre>
         
-<li>Clone the repository:</li>
+<p>Clone the repository:</p>
     <pre><code>git clone https://github.com/IDDochev21/Masquarade</code></pre>
         
-<li>Open your C: drive and locate the folder named: Masquerade</li>
-</ol>
+<p>Open your C: drive and locate the folder named: Masquerade</p>
+
 
 <p>Using the same path, paste:</p>
 
 <h2>Run the Website</h2>
 <p>To run the website, execute the following commands:</p>
-<pre><code>cd Masquerade/demo_dj
+<pre><code>cd Masquarade/python/Masquarade/
 cd demo
 python manage.py runserver</code></pre>
-
-<h2>Run the Script</h2>
-<p>To run the script, execute the following command:</p>
-<pre><code>python Masquerade/login.py</code></pre>
-
 
 </div>
 <hr>
