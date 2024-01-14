@@ -57,3 +57,6 @@ def register_view(request):
         form = RegistrationForm()
 
     return render(request, 'masquaradeApp/register.html', {'form': form, 'error': ''})
+
+def landing_page(request):
+    return render(request, 'masquaradeApp/landing.html')
