@@ -30,21 +30,29 @@
             }
         }
 
-        .form-container {
+        .container {
+            text-align: center;
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 80%;
         }
 
-        h1, p {
+        h1, p, h3 {
             text-align: center;
             color: #333;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
 
-        a {
-            display: block;
+        .balance {
+            margin: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .withdraw-btn {
             margin: 10px;
             padding: 15px 30px;
             color: white;
@@ -52,27 +60,23 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-        }
-
-        .login-btn {
             background-color: #4285f4;
         }
 
-        .register-btn {
-            background-color: #34a853;
-        }
-
-        a:hover {
+        .withdraw-btn:hover {
             background-color: #1a73e8;
         }
     </style>
+    <link rel="icon" type="image/x-icon" href="../assets/logo.png">
 </head>
 <body>
-    <div class="form-container">
-        <h1>Welcome to Masquerade</h1>
-        <p>Choose an option:</p>
-        <a class="login-btn" href="{% url 'login' %}">Login</a>
-        <a class="register-btn" href="{% url 'register' %}">Register</a>
-    </div>
-</body>
+    <div class="container">
+        <h1>Welcome,</h1>
+        <p>Feel free to manage your account!</p>
+        <h3 class="balance">Your Balance: ${{ balance }}</h3>
+        <form method="post" action="{% url 'digital_will' %}">
+            {% csrf_token %}
+            <button class="withdraw-btn" type="submit">Add Will</button>
+        </form>
+    </div></body>
 </html>
