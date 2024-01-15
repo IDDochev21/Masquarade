@@ -91,3 +91,7 @@ python manage.py runserver</code></pre>
 <hr>
 
 <h3 align = "center">Thank you for your interest in our repo! Please consider leaving us a ⭐!</h3>
+
+<div align = "center">
+<img src = "assets/project-logo.png" alt = "logo" width = "30%"></img>
+</div>
