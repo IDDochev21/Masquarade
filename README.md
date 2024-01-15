@@ -3,14 +3,15 @@
 
 <img src = "assets/logo.png" alt = "logo" width = "30%"></img>
 
+</div>
 <h2>📰About</h2>
 <p> 
     We have made a <b>web</b> and <b>console</b> application that allows our customers to register themselves to our bank using whichever method they are most comfortable with.
 </p>
-</div>
+
 <hr>
 
-<div align = "center">
+
 <h2>📥Installation</h2>
 <p>1. Open a terminal on you local machine and clone the repository by the link bellow.</p>
 <p>2. Run the application and you are ready to go!<p>
@@ -41,16 +42,16 @@
 cd demo
 python manage.py runserver</code></pre>
 
-</div>
+
 <hr>
 <h2>📃Documents</h2>
 <h3>Documentation</h3>
 <ul>
-<li><a href="documents/Documentation - Masquerade.docx" download>Documentation</a></li>
+<li><a href="Documents/Documentation.docx" download>Documentation</a></li>
 </ul>
 <h3>Presentation</h3>
 <ul>
-<li><a href="documents/Presentation - Masquerade.pptx" download>Presentation</a></li>
+<li><a href="Documents/Presentation.pptx" download>Presentation</a></li>
 </ul>
 <hr>
 <h2>🖥️Technologies</h2>
@@ -90,3 +91,8 @@ python manage.py runserver</code></pre>
 <hr>
 
 <h3 align = "center">Thank you for your interest in our repo! Please consider leaving us a ⭐!</h3>
+
+<hr>
+<div align = "center">
+<img src = "assets/project-logo.png" alt = "logo" width = "30%"></img>
+</div>
