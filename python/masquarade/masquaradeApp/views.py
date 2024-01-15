@@ -67,22 +67,17 @@ import json
 from django.shortcuts import render
 
 def home_view(request):
-    # Load user data from users.json
     with open('users.json') as json_file:
         user_data = json.load(json_file)
 
     if request.method == 'POST':
-        # Assuming the form has 'username' and 'password' fields
         entered_username = request.POST.get('username')
         entered_password = request.POST.get('password')
 
-        # Check if entered username and password match any user in the user_data
         for user in user_data:
             if user['username'] == entered_username and user['password'] == entered_password:
-                # If the credentials are correct, return the user's balance
                 return render(request, 'masquaradeApp/home.html', {'balance': user['balance']})
     
-    # If the credentials are incorrect or the request method is not POST, render the home template without balance
     return render(request, 'masquaradeApp/home.html')
 
 def read_user_data(file_path):
@@ -97,7 +92,14 @@ def write_user_data(file_path, users_data):
         json.dump(users_data, file, indent=2)
 
 def digital_will_view(request):
-    file_path = 'users.json'  # Replace with the actual path to your 'users.json' file
+    file_path = 'users.json'
+
+    request_data = {
+        'method': request.method,
+        'user': request.user.username if request.user.is_authenticated else None,
+        'POST': dict(request.POST),
+    }
+
 
     if request.method == 'POST':
         form = DigitalWillForm(request.POST)
@@ -106,33 +108,24 @@ def digital_will_view(request):
             amount = float(form.cleaned_data['amount'])
             password = form.cleaned_data['password']
 
-            # Read user data from the JSON file
             users_data = read_user_data(file_path)
 
-            # Find the sender and recipient
             sender = next((user for user in users_data if user['username'] == request.user.username), None)
             recipient = next((user for user in users_data if user['username'] == recipient_username), None)
 
-            # Check if sender and recipient exist
             if sender is None or recipient is None:
-                return render(request, 'masquaradeApp/digital_will.html', {'form': form, 'error': 'Invalid sender or recipient'})
+                return render(request, 'masquaradeApp/digital_will.html')
 
-            # Check if the password is correct
             if sender['password'] != password:
                 return render(request, 'masquaradeApp/digital_will.html', {'form': form, 'error': 'Incorrect password'})
 
-            # Check if the user has enough balance
             if sender['balance'] >= amount:
-                # Deduct the amount from the sender's balance
                 sender['balance'] -= amount
 
-                # Update or create an entry for the recipient
                 recipient['balance'] += amount
 
-                # Save the modified user data back to the JSON file
                 write_user_data(file_path, users_data)
 
-                # Redirect to the home page with the updated balance
                 return redirect('home')
             else:
                 print(f'Error: Insufficient balance. User: {request.user.username}, Amount: {amount}')
