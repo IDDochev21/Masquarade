@@ -47,11 +47,11 @@ python manage.py runserver</code></pre>
 <h2>📃Documents</h2>
 <h3>Documentation</h3>
 <ul>
-<li><a href="documents/Documentation.docx" download>Documentation</a></li>
+<li><a href="Documents/Documentation.docx" download>Documentation</a></li>
 </ul>
 <h3>Presentation</h3>
 <ul>
-<li><a href="documents/Presentation.pptx" download>Presentation</a></li>
+<li><a href="Documents/Presentation.pptx" download>Presentation</a></li>
 </ul>
 <hr>
 <h2>🖥️Technologies</h2>
