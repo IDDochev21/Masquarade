@@ -63,10 +63,42 @@ def register_view(request):
 def landing_page(request):
     return render(request, 'masquaradeApp/landing.html')
 
+import json
+from django.shortcuts import render
+
 def home_view(request):
+    # Load user data from users.json
+    with open('users.json') as json_file:
+        user_data = json.load(json_file)
+
+    if request.method == 'POST':
+        # Assuming the form has 'username' and 'password' fields
+        entered_username = request.POST.get('username')
+        entered_password = request.POST.get('password')
+
+        # Check if entered username and password match any user in the user_data
+        for user in user_data:
+            if user['username'] == entered_username and user['password'] == entered_password:
+                # If the credentials are correct, return the user's balance
+                return render(request, 'masquaradeApp/home.html', {'balance': user['balance']})
+    
+    # If the credentials are incorrect or the request method is not POST, render the home template without balance
     return render(request, 'masquaradeApp/home.html')
 
+def read_user_data(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
+        return []
+
+def write_user_data(file_path, users_data):
+    with open(file_path, 'w') as file:
+        json.dump(users_data, file, indent=2)
+
 def digital_will_view(request):
+    file_path = 'users.json'  # Replace with the actual path to your 'users.json' file
+
     if request.method == 'POST':
         form = DigitalWillForm(request.POST)
         if form.is_valid():
@@ -74,15 +106,8 @@ def digital_will_view(request):
             amount = float(form.cleaned_data['amount'])
             password = form.cleaned_data['password']
 
-            # Get the actual path to your 'users.json' file
-            file_path = 'users.json'  # Replace with the actual path
-
             # Read user data from the JSON file
-            try:
-                with open(file_path, 'r') as file:
-                    users_data = json.load(file)
-            except (FileNotFoundError, json.decoder.JSONDecodeError):
-                users_data = []
+            users_data = read_user_data(file_path)
 
             # Find the sender and recipient
             sender = next((user for user in users_data if user['username'] == request.user.username), None)
@@ -105,8 +130,7 @@ def digital_will_view(request):
                 recipient['balance'] += amount
 
                 # Save the modified user data back to the JSON file
-                with open(file_path, 'w') as file:
-                    json.dump(users_data, file, indent=2)
+                write_user_data(file_path, users_data)
 
                 # Redirect to the home page with the updated balance
                 return redirect('home')
