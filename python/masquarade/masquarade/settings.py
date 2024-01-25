@@ -74,12 +74,12 @@ WSGI_APPLICATION = 'masquarade.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "postgres",
-        'USER': "postgres.ptiowvafquyfrlgublpv",
-        'PASSWORD': "d4v5R9yGe3foCVcp",
-        'HOST': "aws-0-eu-central-1.pooler.supabase.com",
-        'PORT': "6543", 
+        'ENGINE': "",
+        'NAME': "",
+        'USER': "",
+        'PASSWORD': "",
+        'HOST': "",
+        'PORT': "", 
     }
 }
 
